@@ -10,7 +10,11 @@ function CommandOutput({ selectedStack }) {
   let command = "";
 
   if (selectedStack.length === 0) {
-    return <strong>Please select at least one option</strong>;
+    return (
+      <div className="min-h-[140px] transition-all duration-300 flex items-center">
+        <strong>Please select at least one option</strong>
+      </div>
+    );
   }
 
   if (hasTailwind && !hasReact && !hasVite) {
@@ -37,19 +41,19 @@ function CommandOutput({ selectedStack }) {
   };
 
   return (
-    <div className="mt-4 min-h-[140px] transition-all duration-300">
+    <div className="mt-4 min-h-[140px] transition-all duration-300 flex flex-col">
       <pre className="bg-neutral-900 text-white font-mono p-4 rounded overflow-x-auto whitespace-pre-wrap break-words">
         {command}
       </pre>
 
       <button
         onClick={handleCopy}
-        className="mt-2 bg-neutral-800 text-white px-3 py-1 rounded hover:bg-neutral-700"
+        className="mt-2 self-start bg-neutral-800 text-white px-3 py-1 rounded hover:bg-neutral-700"
       >
         {copied ? "Copied!" : "Copy to Clipboard"}
       </button>
     </div>
-);
+  );
 }
 
 export default CommandOutput;

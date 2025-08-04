@@ -2,23 +2,28 @@ import StackSelector from "./components/StackSelector";
 import CommandOutput from "./components/CommandOutput";
 import { useState } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [selectedStack, setSelectedStack] = useState([]);
 
   return (
-<div className="min-h-screen flex flex-col items-center justify-start p-8 bg-neutral-100 text-neutral-900 pt-24">
+    <div className="min-h-screen flex flex-col bg-neutral-100 text-neutral-900">
+      
 
-      <h1 className="text-4xl font-bold mb-8">DevKick</h1>
+      <main className="flex-grow flex items-center justify-center pt-24 px-4">
+        <div className="w-full max-w-xl space-y-6">
+          <Header />
+          <StackSelector selectedStack={selectedStack} setSelectedStack={setSelectedStack} />
+          <CommandOutput selectedStack={selectedStack} />
+        </div>
+      </main>
 
-      <div className="w-full max-w-xl space-y-6">
-        <StackSelector selectedStack={selectedStack} setSelectedStack={setSelectedStack} />
-
-        <CommandOutput selectedStack={selectedStack} />
-      </div>
+      <Footer />
     </div>
   );
 }
+
 
 
 export default App;
